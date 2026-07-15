@@ -49,14 +49,6 @@ No install command is needed.
 
 Because this is a static HTML/CSS/JavaScript project, Vercel does not need a build command.
 
-## Why This Is Resume-Worthy
-
-This project shows frontend design, JavaScript logic, user input handling, state persistence, product thinking, and a clear path toward AI integration.
-
-## Resume Bullet Example
-
-- Built an AI-inspired career dashboard using HTML, CSS, and JavaScript to compare resumes against job descriptions, generate match scores, identify missing skills, and track job applications with LocalStorage.
-
 ## Project Docs
 
 - `DEPLOYMENT.md`: beginner GitHub and Vercel deployment guide
