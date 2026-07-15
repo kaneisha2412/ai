@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Career Coach Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Project summary">
+        <div>
+          <p class="eyebrow">Resume Project</p>
+          <h1>AI Career Coach</h1>
+          <p class="sidebar-copy">
+            Compare your skills with a job post, find gaps, and track applications in one focused dashboard.
+          </p>
+        </div>
+
+        <div class="profile-card">
+          <span class="avatar" aria-hidden="true">KC</span>
+          <div>
+            <strong>Beginner build</strong>
+            <p>No API key required</p>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="Dashboard sections">
+          <a href="#analyzer">Analyzer</a>
+          <a href="#results">Results</a>
+          <a href="#tracker">Tracker</a>
+        </nav>
+      </aside>
+
+      <main>
+        <section class="topbar" aria-label="Dashboard overview">
+          <div>
+            <p class="eyebrow">Career readiness dashboard</p>
+            <h2>Match your resume to a role</h2>
+          </div>
+          <button class="secondary-button" id="sampleBtn" type="button">Load Sample</button>
+        </section>
+
+        <section class="metrics-grid" aria-label="Summary metrics">
+          <article class="metric">
+            <span>Match Score</span>
+            <strong id="scoreMetric">0%</strong>
+          </article>
+          <article class="metric">
+            <span>Matched Skills</span>
+            <strong id="matchedMetric">0</strong>
+          </article>
+          <article class="metric">
+            <span>Missing Skills</span>
+            <strong id="missingMetric">0</strong>
+          </article>
+          <article class="metric">
+            <span>Applications</span>
+            <strong id="applicationMetric">0</strong>
+          </article>
+        </section>
+
+        <section class="panel analyzer-panel" id="analyzer">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Step 1</p>
+              <h3>Paste your details</h3>
+            </div>
+            <button class="primary-button" id="analyzeBtn" type="button">Analyze</button>
+          </div>
+
+          <div class="input-grid">
+            <label>
+              <span>Your resume or skills</span>
+              <textarea id="resumeInput" placeholder="Example: I know HTML, CSS, JavaScript, React, Git, and basic Python."></textarea>
+            </label>
+            <label>
+              <span>Job description</span>
+              <textarea id="jobInput" placeholder="Paste a job post here. Include responsibilities, tools, and required skills."></textarea>
+            </label>
+          </div>
+        </section>
+
+        <section class="results-layout" id="results">
+          <article class="panel score-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Step 2</p>
+                <h3>Readiness score</h3>
+              </div>
+              <button class="secondary-button" id="exportBtn" type="button">Export</button>
+            </div>
+
+            <div class="score-ring" aria-label="Match score">
+              <div>
+                <strong id="scoreValue">0%</strong>
+                <span>match</span>
+              </div>
+            </div>
+            <p id="scoreMessage" class="score-message">Run an analysis to see your role fit.</p>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Skill map</p>
+                <h3>Matched and missing skills</h3>
+              </div>
+            </div>
+            <div class="skill-columns">
+              <div>
+                <h4>Matched</h4>
+                <div class="tag-list" id="matchedSkills"></div>
+              </div>
+              <div>
+                <h4>Missing</h4>
+                <div class="tag-list" id="missingSkills"></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Next steps</p>
+                <h3>Learning plan</h3>
+              </div>
+            </div>
+            <ol class="plan-list" id="learningPlan"></ol>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Practice</p>
+                <h3>Interview questions</h3>
+              </div>
+            </div>
+            <ul class="question-list" id="questionsList"></ul>
+          </article>
+
+          <article class="panel resume-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Portfolio help</p>
+                <h3>Resume bullets</h3>
+              </div>
+            </div>
+            <ul class="question-list" id="resumeBullets"></ul>
+          </article>
+        </section>
+
+        <section class="panel tracker-panel" id="tracker">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Step 3</p>
+              <h3>Application tracker</h3>
+            </div>
+            <button class="secondary-button" id="clearTrackerBtn" type="button">Clear</button>
+          </div>
+
+          <form class="tracker-form" id="trackerForm">
+            <input id="companyInput" type="text" placeholder="Company" required />
+            <input id="roleInput" type="text" placeholder="Role" required />
+            <select id="statusInput" aria-label="Application status">
+              <option>Saved</option>
+              <option>Applied</option>
+              <option>Interview</option>
+              <option>Offer</option>
+              <option>Rejected</option>
+            </select>
+            <input id="notesInput" type="text" placeholder="Notes" />
+            <button class="primary-button" type="submit">Add</button>
+          </form>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Company</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Score</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody id="trackerRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
